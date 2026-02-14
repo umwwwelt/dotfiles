@@ -1,0 +1,6 @@
+# set -gx OPENAI_API_KEY (dcli note 'OPENAI_API_KEY')
+# set -gx FIRECRAWL_API_KEY (dcli note 'FIRECRAWL_API_KEY')
+set -gx CONTEXT7_API_KEY (dcli note 'CONTEXT7_API_KEY')
+# set -gx OPENAI_API_KEY (dcli note 'OPENAI_API_KEY')
+# set -gx MISTRAL_API_KEY (dcli note 'MISTRAL_API_KEY')
+# set -gx BRAVE_API_KEY (dcli note 'BRAVE_API_KEY')

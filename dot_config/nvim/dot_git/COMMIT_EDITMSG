@@ -1,0 +1,28 @@
+feat: add some shits
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Commands:
+#   q          Close
+#   <c-c><c-c> Submit
+#   <c-c><c-k> Abort
+#   <m-p>      Previous Message
+#   <m-n>      Next Message
+#   <m-r>      Reset Message
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   lazy-lock.json
+#	modified:   lua/keymap.lua
+#	modified:   lua/plugins/avante.lua
+#	modified:   lua/plugins/blink.lua
+#	modified:   lua/plugins/copilot.lua
+#	modified:   lua/plugins/hardtime.lua
+#	new file:   lua/plugins/indent.lua
+#	new file:   lua/plugins/qmk.lua
+#	new file:   lua/plugins/regex.lua
+#	new file:   lua/plugins/type.lua
+#
+

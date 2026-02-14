@@ -1,0 +1,60 @@
+0000000000000000000000000000000000000000 9999ad4a20a51476deaf9a1fe581249d03882762 Yann Bougaret <yann.bougaret@radiofrance.com> 1743607582 +0200	commit (initial): Update .gitignore
+9999ad4a20a51476deaf9a1fe581249d03882762 907319b3bf23ea4e01459916b31569c1da66b85d Yann Bougaret <yann.bougaret@radiofrance.com> 1743608067 +0200	commit: Update readme
+907319b3bf23ea4e01459916b31569c1da66b85d 85b548931ce1fda63752164cb47e0b6bb7e4bc8c Yann Bougaret <yann.bougaret@radiofrance.com> 1743609913 +0200	commit: Update buffers wip
+85b548931ce1fda63752164cb47e0b6bb7e4bc8c 1dcad6de762be1e1491e88efc32e05805f64d6d0 Yann Bougaret <yann.bougaret@radiofrance.com> 1743681324 +0200	commit: update avante
+1dcad6de762be1e1491e88efc32e05805f64d6d0 7d701d0c4d16fc6addff743ea05aed652420df0f Yann Bougaret <yann.bougaret@radiofrance.com> 1743684313 +0200	commit: reset ai
+7d701d0c4d16fc6addff743ea05aed652420df0f 60dd96d7d80c822d5e1e572face6ed5e3e33f6a3 Yann Bougaret <yann.bougaret@radiofrance.com> 1743692503 +0200	commit: fix: update some shit on avante
+60dd96d7d80c822d5e1e572face6ed5e3e33f6a3 30aff913fc196602732f92e555a9805231413979 Yann Bougaret <yann.bougaret@radiofrance.com> 1744102405 +0200	commit: Update modified files
+30aff913fc196602732f92e555a9805231413979 7d594bd1a82cb99e3cd2cbad4675eaf323802f3d Yann Bougaret <yann.bougaret@radiofrance.com> 1744120792 +0200	commit: Update : colors
+7d594bd1a82cb99e3cd2cbad4675eaf323802f3d b28d1b8d0a82b8f4288a3ff62f2109691a1af64c Yann Bougaret <yann.bougaret@radiofrance.com> 1744194329 +0200	commit: Update .gitignore
+b28d1b8d0a82b8f4288a3ff62f2109691a1af64c bc749f7c38aa0d71c641c4384fe12c54fbd238fc Yann Bougaret <yann.bougaret@radiofrance.com> 1744195875 +0200	commit: Update color
+bc749f7c38aa0d71c641c4384fe12c54fbd238fc 4161ab9698abc6243701ee0517ed54429a22bea3 Yann Bougaret <yann.bougaret@radiofrance.com> 1744276622 +0200	commit: Update: cursor color
+4161ab9698abc6243701ee0517ed54429a22bea3 301025e21d8fd9e829741aea9f12fc168784cff9 Yann Bougaret <yann.bougaret@radiofrance.com> 1744290659 +0200	commit: fix: update some shit on avante
+301025e21d8fd9e829741aea9f12fc168784cff9 c623877d83ac18edb1bee3ce327f66fed4c88f68 Yann Bougaret <yann.bougaret@radiofrance.com> 1744291012 +0200	commit: feat(theme): enhance TypeScript syntax highlighting with darker operator color and type definitions
+c623877d83ac18edb1bee3ce327f66fed4c88f68 bb57e232663534ad54f51609fd7b0cb936cdb5c1 Yann Bougaret <yann.bougaret@radiofrance.com> 1744303780 +0200	commit: fix: update some colors
+bb57e232663534ad54f51609fd7b0cb936cdb5c1 fc67d82030b762106ebd02352a579cef4e94c136 Yann Bougaret <yann.bougaret@radiofrance.com> 1744366641 +0200	commit: feat(theme): update diagnostic and syntax highlighting
+fc67d82030b762106ebd02352a579cef4e94c136 7553a83b05716033d3158b9e686ad4ef56801948 Yann Bougaret <yann.bougaret@radiofrance.com> 1744366729 +0200	pull: Fast-forward
+7553a83b05716033d3158b9e686ad4ef56801948 322bb2387957b75c5c116d4e7216eedd27a47863 Yann Bougaret <yann.bougaret@radiofrance.com> 1744471647 +0200	commit: fix: update diag line
+322bb2387957b75c5c116d4e7216eedd27a47863 15d3f52763ff36f19b6084cdd6f034eabd5a4181 Yann Bougaret <yann.bougaret@radiofrance.com> 1744641195 +0200	commit: fix: update some git
+15d3f52763ff36f19b6084cdd6f034eabd5a4181 aef85aec33264965095f1f298ed8706100537aa4 Yann Bougaret <yann.bougaret@radiofrance.com> 1744707361 +0200	commit: update neovim configuration and plugins
+aef85aec33264965095f1f298ed8706100537aa4 cdf2deb36f0bd5a0b33baaf8ae91775fbe5edd1e Yann Bougaret <yann.bougaret@radiofrance.com> 1744724845 +0200	commit: feat(nvim): update configs and theme
+cdf2deb36f0bd5a0b33baaf8ae91775fbe5edd1e 3d6e55c20120b0d40ac3b572fe7555e3d3cc10bc umwwwelt <yann@velte.studio> 1744729704 +0200	commit: refactor: update theme and highlight configurations
+3d6e55c20120b0d40ac3b572fe7555e3d3cc10bc 636f99af3916f39b8e1e083f39b07b03bf306304 umwwwelt <yann@velte.studio> 1744734517 +0200	commit: update change styles
+636f99af3916f39b8e1e083f39b07b03bf306304 cf4c3219a36ef92bb058d4d4d09152b30cde95ad umwwwelt <yann@velte.studio> 1744800024 +0200	commit: update: neovim config - svelte highlights and telescope settings
+cf4c3219a36ef92bb058d4d4d09152b30cde95ad 2c6b111a47b9ddbceb31abdaad5a445bf9bfab1e umwwwelt <yann@velte.studio> 1744812885 +0200	commit: update changes
+2c6b111a47b9ddbceb31abdaad5a445bf9bfab1e 2f0c6c9fdf2c8c59550dc19d7981576299f2d99b umwwwelt <yann@velte.studio> 1744815364 +0200	commit: feat: commit svelte color
+2f0c6c9fdf2c8c59550dc19d7981576299f2d99b af54b8acd9addf225fa135481be4e1658acf0b96 umwwwelt <yann@velte.studio> 1744816086 +0200	commit: feat: tab lua file
+af54b8acd9addf225fa135481be4e1658acf0b96 67225bb9446f23db2e4c39f5c230e83eddcd3320 umwwwelt <yann@velte.studio> 1744816157 +0200	commit: feat : tree size
+67225bb9446f23db2e4c39f5c230e83eddcd3320 cedf1b34492022513aa8a4796a28e19464524a22 umwwwelt <yann@velte.studio> 1744816408 +0200	commit: feat: update theme styling and configuration
+cedf1b34492022513aa8a4796a28e19464524a22 ae6010fc9717f06c65a32ae0a4a60da395a1e17e umwwwelt <yann@velte.studio> 1744816938 +0200	commit: feat: telescope border color change
+ae6010fc9717f06c65a32ae0a4a60da395a1e17e 85cf28cdf30df021449337c6faa943184f9c9923 umwwwelt <yann@velte.studio> 1744817217 +0200	commit: feat: test yellow
+85cf28cdf30df021449337c6faa943184f9c9923 e51a219839093e50d67cfae93b445a54a1034854 umwwwelt <yann@velte.studio> 1744817610 +0200	commit: feat: test gh gl
+e51a219839093e50d67cfae93b445a54a1034854 02b747c8b3ba9b78ae98b26ca670d56f43fb49fd umwwwelt <yann@velte.studio> 1744818128 +0200	commit: chore: theme adjustments for cursor and telescope
+02b747c8b3ba9b78ae98b26ca670d56f43fb49fd 50a1de6a08ccc8d65fc19094f33cf38dd322ca7a umwwwelt <yann@velte.studio> 1744818661 +0200	commit: feat: blue ligne
+50a1de6a08ccc8d65fc19094f33cf38dd322ca7a 0eb41da5027393ffa98dcb0c1942694ed750b036 umwwwelt <yann@velte.studio> 1744818841 +0200	commit: feat: red line
+0eb41da5027393ffa98dcb0c1942694ed750b036 dd6a5024ab321ed385854daaba89f9daaa7314a5 umwwwelt <yann@velte.studio> 1744819214 +0200	commit: chore: update theme color settings
+dd6a5024ab321ed385854daaba89f9daaa7314a5 3d9942e773567c1717c1d4bdfbd186f579ad41ba umwwwelt <yann@velte.studio> 1744879051 +0200	commit: chore: pachage lock
+3d9942e773567c1717c1d4bdfbd186f579ad41ba 0124a296be903933ab0b45f3489879f2869d9611 umwwwelt <yann@velte.studio> 1744879127 +0200	commit: fix: mauve pas tant que ça
+0124a296be903933ab0b45f3489879f2869d9611 7d1ed1d05eae8ad98d66e0a7cb1ce4a22f4981a5 umwwwelt <yann@velte.studio> 1744974909 +0200	commit: feat: new theme update and autocmd
+7d1ed1d05eae8ad98d66e0a7cb1ce4a22f4981a5 b285c6e377c66d7f9cf5784c6d9e48fc1d7207a8 umwwwelt <yann@velte.studio> 1744975006 +0200	commit: chore: update package
+b285c6e377c66d7f9cf5784c6d9e48fc1d7207a8 cec47424f697ca4583543c1597863e1117e86dca umwwwelt <yann@velte.studio> 1745338017 +0200	commit: feat: update theme
+cec47424f697ca4583543c1597863e1117e86dca 6299e37cdaa20c8754d2edb6166f58a278012958 umwwwelt <yann@velte.studio> 1745400134 +0200	commit: feat: add cc & verctorcode
+6299e37cdaa20c8754d2edb6166f58a278012958 8da6efc4225371a2c447529d3674727b357d4aa2 umwwwelt <yann@velte.studio> 1745520228 +0200	commit: feat: add Svelte filetype config, new NvimTree keymaps, and custom command
+8da6efc4225371a2c447529d3674727b357d4aa2 723b1abb133549467052d71b0daa429c817cae5a umwwwelt <yann@velte.studio> 1745610499 +0200	commit: feat: enable avante.nvim with updated providers and add Neovide configuration
+723b1abb133549467052d71b0daa429c817cae5a 3e854800a76379a9b32ede96ad0eed928cad2f85 umwwwelt <yann@velte.studio> 1745945209 +0200	commit: feat(plugins): enable smear-cursor and add multicursor.nvim with custom keymaps
+3e854800a76379a9b32ede96ad0eed928cad2f85 316092b0ae9371ecc2fea68138666eade20bc374 umwwwelt <yann@velte.studio> 1746455110 +0200	commit: feat(ts): add typescript filetype plugin and update keymap, plugin settings, and lockfile
+316092b0ae9371ecc2fea68138666eade20bc374 73fa8cb153b58aa0d02df918ba70ad7d6d43547c umwwwelt <yann@velte.studio> 1746463014 +0200	commit: feat: enhance statusline, add Noice, update plugins, and minor config cleanups
+73fa8cb153b58aa0d02df918ba70ad7d6d43547c 603d118a770c8156ca889bee0dcc254fd1c8d8be umwwwelt <yann@velte.studio> 1747147639 +0200	commit: feat(editor): add Svelte CSS helper, typescriptreact indent, auto-session plugin, and tailwindcss LSP
+603d118a770c8156ca889bee0dcc254fd1c8d8be 489009cf850313b7d1842106ed2ad3b36fefbd1f umwwwelt <yann@velte.studio> 1747217484 +0200	commit: feat: lsp format tsx
+489009cf850313b7d1842106ed2ad3b36fefbd1f 360aa1a0e3353524281dd44873d72a1834ab020e umwwwelt <yann@velte.studio> 1747386316 +0200	commit: feat(nvim): update plugins and config
+360aa1a0e3353524281dd44873d72a1834ab020e edb32a5f372326bd124b91af59ef354c80e4fd8d umwwwelt <yann@velte.studio> 1747576175 +0200	commit: feat(plugins,theme): add Neogit, disable Fugitive, and improve diagnostics coloring
+edb32a5f372326bd124b91af59ef354c80e4fd8d f9bada20cc56e76bbd02a447bb40591115d5593e umwwwelt <yann@velte.studio> 1747647507 +0200	commit: feat(neogit): add keymap to open Neogit in floating window with `<leader>gs`
+f9bada20cc56e76bbd02a447bb40591115d5593e 91b34d9984eff76aa8e944674e4c43bfeb00bb02 umwwwelt <yann@velte.studio> 1748249876 +0200	commit: feat : ajout et mise à jour de plugins (hardtime, cc, neogit, noice, telescope, theme)
+91b34d9984eff76aa8e944674e4c43bfeb00bb02 4d725a4f6e3cc59882099f38a872a1624a6bff7d umwwwelt <yann@velte.studio> 1748425976 +0200	commit: feat: add pairs and tabou plugins, update format, lsp, mini configs
+4d725a4f6e3cc59882099f38a872a1624a6bff7d 25f582dcb7ae685b02f0ef8f68b164e2c47b4eac umwwwelt <yann@velte.studio> 1749221795 +0200	commit: Add obsidian and flash plugins, update existing plugins
+25f582dcb7ae685b02f0ef8f68b164e2c47b4eac 882ee7e601fc5c1f2975b053153530c70f1efb41 umwwwelt <yann@velte.studio> 1750151123 +0200	commit: feat(plugins): enable codecompanion, disable avante, tweak flash and neogit keymaps
+882ee7e601fc5c1f2975b053153530c70f1efb41 a652ed538a5cf85a0d680c9cac314f1273ef27d9 umwwwelt <yann@velte.studio> 1750670969 +0200	commit: chore(plugins): update plugins
+a652ed538a5cf85a0d680c9cac314f1273ef27d9 3df9b904f6f4388d147ef0e032c5dc9d6ad564d2 umwwwelt <yann@velte.studio> 1750927892 +0200	commit: chore(plugins): update plugins
+3df9b904f6f4388d147ef0e032c5dc9d6ad564d2 6a32e2a59ef0e7b388cf215cc4c4cf4ec71899a2 umwwwelt <yann@velte.studio> 1751557385 +0200	commit: fix: luasnip and smear disabled
+6a32e2a59ef0e7b388cf215cc4c4cf4ec71899a2 b580c960ae5068a093c5fbac811e85060008607d umwwwelt <yann@velte.studio> 1752406023 +0200	commit: feat: zig
+b580c960ae5068a093c5fbac811e85060008607d 1a832b4047bbe8bb311627933887ec282b6ea78d umwwwelt <yann@velte.studio> 1758103508 +0200	commit: feat: add some shits

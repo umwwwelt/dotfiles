@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "svelte": {
+      "type": "remote",
+      "url": "https://mcp.svelte.dev/mcp"
+    },
+    "chrome": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+    },
+    "firecrawl-mcp": {
+      "enabled": false,
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "environment": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      }
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "enabled": true
+    }
+  },
+  "formatter": {
+    "lint": {
+      "command": ["npm", "run", "lint", "--", "--fix", "$FILE"],
+      "extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]
+    }
+  },
+  "permission": {
+    "tool": {
+      "context7_resolve-library-id": "allow",
+      "context7_query-docs": "allow"
+    }
+  }
+}

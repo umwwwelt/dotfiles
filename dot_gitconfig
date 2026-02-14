@@ -1,0 +1,21 @@
+[user]
+	name = umwwwelt (Yann Bougaret)
+	email = y.bougaret@pm.me
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	adog = log --all --decorate --oneline --graph
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[merge]
+	conflictStyle = zdiff3
+[rebase]
+	autosquash = true
+[core]
+	excludesfile = /Users/tantra/.gitignore_global
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
