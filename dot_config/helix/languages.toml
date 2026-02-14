@@ -1,0 +1,184 @@
+# LANGUAGE SERVERS
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 100
+feature_words = false
+feature_snippets = true
+snippets_first = true
+snippets_inline_by_word_tail = false
+feature_unicode_input = false
+feature_paths = false
+feature_citations = false
+
+[language-server.stylelint]
+command = "stylelint-lsp"
+args = ["--stdio"]
+
+[language-server.stylelint.config]
+stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
+
+# eslint
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+format = { enabled = true }
+validate = "on"
+experimental = { useFlatConfig = true }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+
+[language-server.eslint.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.eslint.config.workingDirectory]
+mode = "location"
+
+
+# BIOME
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+# PYTHON
+[language-server.pylsp.config.pylsp]
+plugins.ruff.enabled = true
+plugins.black.enabled = true
+
+# LANGUAGE
+
+[[language]]
+name = "svelte"
+auto-format = true
+language-servers = ["lsp-ai", "svelteserver", "scls", "stylelint"]
+formatter = { command = 'prettier', args = ["--parser", "svelte"] }
+
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = [
+  # "lsp-ai",
+  { name = 'typescript-language-server', except-features = ['format'] },
+  # "biome",
+  "eslint",
+  "scls",
+]
+# formatter = { command = "biome", args = [
+#   "format",
+#   "--stdin-file-path",
+#   "a.ts",
+# ] }
+# formatter = { command = "bunx", args = [
+#   "eslint",
+#   "--fix-dry-run",
+#   "--stdin",
+#   "--stdin-filename",
+#   "%{buffer_name}",
+# ] }
+
+[[language]]
+name = "javascript"
+auto-format = true
+language-servers = [
+  # "lsp-ai",
+  { name = 'typescript-language-server', except-features = ['format'] },
+  # "biome",
+  "eslint",
+  "scls",
+]
+# formatter = { command = "biome", args = [
+#   "format",
+#   "--stdin-file-path",
+#   "a.js",
+# ] }
+
+[[language]]
+name = "css"
+auto-format = true
+language-servers = ["scls", "stylelint", "vscode-css-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+
+[[language]]
+name = "graphql"
+scope = "source.graphql"
+file-types = ["graphql", "gql"]
+language-servers = ["graphql-lsp"]
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "graphql"] }
+
+[[language]]
+name = "json"
+language-servers = ["scls"]
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "json"
+language-servers = [
+  { name = "vscode-json-language-server", except-features = ["format"] },
+  # "biome",
+  "eslint",
+  "scls",
+]
+[[language]]
+name = "zig"
+auto-format = true
+
+[[language]]
+name = "git-commit"
+language-servers = ["scls", "lsp-ai"]
+
+[[language]]
+name = "toml"
+auto-format = true
+language-servers = ["scls"]
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "python"
+auto-format = true
+
+################################
+### Configuration for lsp-ai ###
+################################
+
+[language-server.lsp-ai]
+command = "lsp-ai"
+
+[language-server.lsp-ai.config.memory]
+file_store = {}
+
+[language-server.lsp-ai.config.models.model1]
+type = "anthropic"
+chat_endpoint = "https://api.anthropic.com/v1/messages"
+model = "claude-3-5-sonnet-20240620"
+auth_token_env_var_name = "ANTHROPIC_API_KEY"
+
+[[language-server.lsp-ai.config.chat]]
+trigger = "!C"
+action_display_name = "Chat"
+model = "model1"
+
+[language-server.lsp-ai.config.chat.parameters]
+max_context = 4096
+max_tokens = 1024
+system = "You are a code assistant chatbot. The user will ask you for assistance coding and you will do you best to answer succinctly and accurately"
+
+#################################
+## Configuration for languages ##
+#################################
+
+## Every file type we intend to chat in needs to have lsp-ai enabled 
+
+# [[language]]
+# name = "markdown"
+# language-servers = ["lsp-ai"]
