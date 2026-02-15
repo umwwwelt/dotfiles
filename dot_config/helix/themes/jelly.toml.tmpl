@@ -1,0 +1,103 @@
+# Jelly theme - generated from centralized palette
+# Colors synchronized with Delta and lazygit
+
+"attribute" = "orange"
+"keyword" = { fg = "yellow", modifiers = ["bold"] }
+"keyword.directive" = "yellow"
+"namespace" = "red"
+"punctuation" = "orange"
+"punctuation.delimiter" = "base4"
+"operator" = { fg = "orange", modifiers = ["bold"] }
+"special" = "lgreen"
+"variable.other.member" = "fg0"
+"variable" = "fg0"
+"variable.parameter" = "fg0"
+"type" = { fg = "blue", modifiers = ["underlined", "slow_blink"] }
+"type.builtin" = { fg = "blue", modifiers = ["bold"] }
+"constructor" = "lred"
+"function" = { fg = "purp", modifiers = ["italic"] }
+"function.macro" = { fg = "orange", modifiers = ["bold"] }
+"function.builtin" = { fg = "lblue", modifiers = ["bold"] }
+"comment" = "base5"
+"variable.builtin" = "fg0"
+"constant" = "teal"
+"constant.builtin" = "teal"
+"string" = "fg0"
+"constant.numeric" = "blue"
+"constant.character.escape" = { fg = "lgreen", modifiers = ["bold"] }
+"label" = "blue"
+"module" = "red"
+
+"markup.heading" = "blue"
+"markup.list" = "red"
+"markup.bold" = { fg = "yellow", modifiers = ["bold"] }
+"markup.italic" = { fg = "purp", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "yellow", modifiers = ["underlined"] }
+"markup.link.text" = "red"
+"markup.quote" = "teal"
+"markup.raw" = "lgreen"
+
+"diff.plus" = "teal"
+"diff.delta" = "orange"
+"diff.minus" = "lred"
+
+"ui.background" = {}
+"ui.linenr" = { fg = "base4" }
+"ui.linenr.selected" = { fg = "fg1" }
+"ui.cursorline" = { bg = "base0" }
+"ui.statusline" = { fg = "fg1", bg = "base2" }
+"ui.statusline.inactive" = { fg = "fg0", bg = "base2" }
+"ui.popup" = {}
+"ui.window" = { bg = "base0" }
+"ui.help" = { bg = "base2", fg = "fg1" }
+
+"ui.statusline.normal" = { fg = "base1", bg = "teal", modifiers = [ "bold" ]}
+"ui.statusline.insert" = { bg = "orange" }
+"ui.text" = { fg = "fg1" }
+"ui.text.focus" = { fg = "fg1", modifiers= ["bold"] }
+"ui.virtual.whitespace" = "base1"
+"ui.virtual.indent-guide" = { fg = "base2" }
+"ui.virtual.ruler" = { bg = "base0" }
+"ui.virtual.jump-label" = { fg = "base0", bg = "yellow", modifiers = [ "bold" ] }
+
+"ui.selection" = { bg = "base2" }
+"ui.selection.primary" = { bg = "base3" }
+"ui.cursor.match" = { bg = "base3" }
+"ui.cursor" = { fg = "base5", modifiers = ["reversed"] }
+
+"ui.menu" = { fg = "fg1", bg = "base2" }
+"ui.menu.selected" = { bg = "base3" }
+"ui.bufferline" = { fg = 'base2' }
+"ui.bufferline.active" = { fg = 'base3', bg = 'yellow' }
+
+"warning" = "orange"
+"error" = "lred"
+"info" = "teal"
+"hint" = "blue"
+
+"diagnostic.warning" = { underline = { color = "orange", style = "curl"} }
+"diagnostic.error" = { underline = { color = "lred", style = "curl"} }
+"diagnostic.info" = { underline = { color = "teal", style = "curl"} }
+"diagnostic.hint" = { underline = { color = "blue", style = "curl"} }
+"diagnostic.unnecessary" = { modifiers = ["crossed_out", "dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+[palette]
+base0 = "{{ .jelly.base0 }}"
+base1 = "{{ .jelly.base1 }}"
+base2 = "{{ .jelly.base2 }}"
+base3 = "{{ .jelly.base3 }}"
+base4 = "{{ .jelly.base4 }}"
+base5 = "{{ .jelly.base5 }}"
+fg0 = "{{ .jelly.fg0 }}"
+fg1 = "{{ .jelly.fg1 }}"
+teal = "{{ .jelly.teal }}"
+yellow = "{{ .jelly.yellow }}"
+blue = "{{ .jelly.blue }}"
+lblue = "{{ .jelly.lblue }}"
+orange = "{{ .jelly.orange }}"
+red = "{{ .jelly.red }}"
+lred = "{{ .jelly.lred }}"
+purp = "{{ .jelly.purp }}"
+lgreen = "{{ .jelly.lgreen }}"
