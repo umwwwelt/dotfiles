@@ -1,0 +1,10 @@
+os:
+  edit: "echo {{filename}} > /tmp/lazygit_out.txt && killall lazygit"
+  editInTerminal: true
+
+gui:
+  theme:
+    selectedLineBgColor:
+       black
+    inactiveViewSelectedLineBgColor:
+       bold
