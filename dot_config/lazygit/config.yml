@@ -1,10 +1,14 @@
 os:
-  edit: "echo {{filename}} > /tmp/lazygit_out.txt && killall lazygit"
+  edit: "hx -- {{filename}}"
+  editAtLine: "hx -- {{filename}}:{{line}}"
   editInTerminal: true
 
 gui:
   theme:
     selectedLineBgColor:
-      - black
-    inactiveViewSelectedLineBgColor:
-      - bold
+      - '#1e1e1e'
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --side-by-side --line-numbers --paging=never
