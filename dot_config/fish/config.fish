@@ -20,6 +20,8 @@ set -g HELIX_RUNTIME "/Users/tantra/.config/helix/runtime"
 set -gx EDITOR hx
 set -gx VISUAL hx
 
+set -gx XDG_CONFIG_HOME "/Users/tantra/.config"
+
 #ALIAS
 alias h hx
 alias lg lazygit
