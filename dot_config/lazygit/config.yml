@@ -5,6 +5,6 @@ os:
 gui:
   theme:
     selectedLineBgColor:
-       black
+      - black
     inactiveViewSelectedLineBgColor:
-       bold
+      - bold
