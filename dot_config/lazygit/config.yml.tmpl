@@ -1,0 +1,35 @@
+os:
+  edit: "hx -- {{`{{filename}}`}}"
+  editAtLine: "hx -- {{`{{filename}}:{{line}}`}}"
+  editInTerminal: true
+
+gui:
+  theme:
+    activeBorderColor:
+      - "{{ .jelly.teal }}"
+      - bold
+    inactiveBorderColor:
+      - "{{ .jelly.base4 }}"
+    optionsTextColor:
+      - "{{ .jelly.yellow }}"
+    selectedLineBgColor:
+      - "{{ .jelly.base3 }}"
+    selectedRangeBgColor:
+      - "{{ .jelly.base2 }}"
+    cherryPickedCommitBgColor:
+      - "{{ .jelly.base4 }}"
+    cherryPickedCommitFgColor:
+      - "{{ .jelly.teal }}"
+    unstagedChangesColor:
+      - "{{ .jelly.lred }}"
+    defaultFgColor:
+      - "{{ .jelly.fg1 }}"
+    searchingActiveBorderColor:
+      - "{{ .jelly.yellow }}"
+  authorColors:
+    '*': "{{ .jelly.purp }}"
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --side-by-side --line-numbers --paging=never

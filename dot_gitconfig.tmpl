@@ -1,0 +1,37 @@
+[user]
+	name = umwwwelt (Yann Bougaret)
+	email = y.bougaret@pm.me
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	adog = log --all --decorate --oneline --graph
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[merge]
+	conflictStyle = zdiff3
+[rebase]
+	autosquash = true
+[core]
+	excludesfile = /Users/tantra/.gitignore_global
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+	syntax-theme = Monokai Extended
+	minus-style = "{{ .jelly.lred }} {{ .jelly.base0 }}"
+	plus-style = "{{ .jelly.teal }} {{ .jelly.base0 }}"
+	minus-emph-style = "{{ .jelly.lred }} bold {{ .jelly.base3 }}"
+	plus-emph-style = "{{ .jelly.teal }} bold {{ .jelly.base3 }}"
+	file-style = "{{ .jelly.blue }}"
+	file-decoration-style = "{{ .jelly.blue }} ul"
+	hunk-header-style = "{{ .jelly.purp }}"
+	hunk-header-decoration-style = "{{ .jelly.base4 }}"
+	commit-style = "{{ .jelly.yellow }} bold"
+	line-numbers = true
+	line-numbers-left-style = "{{ .jelly.base4 }}"
+	line-numbers-right-style = "{{ .jelly.base4 }}"
+	line-numbers-minus-style = "{{ .jelly.lred }}"
+	line-numbers-plus-style = "{{ .jelly.teal }}"
