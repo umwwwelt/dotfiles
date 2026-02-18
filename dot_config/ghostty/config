@@ -14,17 +14,19 @@ background-opacity = 0.91
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = true
 window-save-state = always
-shell-integration = "zsh"
+shell-integration = "fish"
 
 keybind = global:ctrl+y=toggle_quick_terminal
 keybind = ctrl+l=goto_split:left
-keybind = ctrl+r=goto_split:right
+keybind = ctrl+r=goto_split:bottom
+keybind = ctrl+t=goto_split:top
+keybind = ctrl+i=goto_split:right
 
 
 # Adjust padding
 cursor-style = block
 cursor-style-blink = true
 
-fullscreen = true
+fullscreen = false
 maximize = true
 macos-option-as-alt = left
