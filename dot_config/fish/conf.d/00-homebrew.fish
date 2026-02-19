@@ -1,5 +1,5 @@
 if test -x /opt/homebrew/bin/brew
-  eval (/opt/homebrew/bin/brew shellenv)
+  fish_add_path -g /opt/homebrew/bin /opt/homebrew/sbin
 else if test -x /usr/local/bin/brew
-  eval (/usr/local/bin/brew shellenv)
+  fish_add_path -g /usr/local/bin /usr/local/sbin
 end

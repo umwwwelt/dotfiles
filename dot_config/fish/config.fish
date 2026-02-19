@@ -1,15 +1,15 @@
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/tantra/miniconda3/bin/conda
-    eval /Users/tantra/miniconda3/bin/conda "shell.fish" hook $argv | source
-else
-    if test -f "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
+# Lazy conda init to speed up fish startup.
+function conda
+    if test -f /Users/tantra/miniconda3/bin/conda
+        eval /Users/tantra/miniconda3/bin/conda "shell.fish" hook $argv | source
+    else if test -f "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
+        source "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
     else
         set -x PATH /Users/tantra/miniconda3/bin $PATH
     end
+    functions -e conda
+    conda $argv
 end
-# <<< conda initialize <<<
 
 # fish_helix_key_bindings()
 
