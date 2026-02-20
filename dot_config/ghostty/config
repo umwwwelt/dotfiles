@@ -29,4 +29,5 @@ cursor-style-blink = true
 
 fullscreen = false
 maximize = true
+quick-terminal-size = 38%
 macos-option-as-alt = left
