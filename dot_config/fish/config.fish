@@ -22,6 +22,10 @@ set -gx VISUAL hx
 
 set -gx XDG_CONFIG_HOME "/Users/tantra/.config"
 
+# PUPPETEER
+set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+
 #ALIAS
 alias h hx
 alias lg lazygit
