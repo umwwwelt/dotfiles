@@ -9,7 +9,6 @@ color-modes = true
 auto-format = true
 clipboard-provider = "pasteboard"
 popup-border = "all"
-workspace-lsp-roots = ["."]
 auto-reload = true
 
 # Fork
@@ -113,6 +112,7 @@ end-color = "#FF69B4"    # Hot Pink
 animation-speed = 1
 
 [editor.lsp]
+display-inlay-hints = true
 signature-help-position = "below"
 
 

@@ -19,6 +19,12 @@ args = ["--stdio"]
 [language-server.stylelint.config]
 stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
 
+[language-server.rust-analyzer.config]
+checkOnSave = true
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
 # eslint
 [language-server.eslint]
 command = "vscode-eslint-language-server"
@@ -146,6 +152,11 @@ formatter = { command = "taplo", args = ["fmt", "-"] }
 [[language]]
 name = "python"
 auto-format = true
+
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt" }
 
 ################################
 ### Configuration for lsp-ai ###
