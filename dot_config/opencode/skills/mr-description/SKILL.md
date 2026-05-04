@@ -19,6 +19,43 @@ Si c'est une toute petite mr, une phrase suffit.
 1. Lire les diffs : `git diff base..HEAD`
 2. Identifier les modules/fonctionnalités modifiés
 3. Regrouper par module (pas par type Feature/Fix/Refactor)
+4. Générer un titre concis (max 50 caractères) : `type(scope): description`
+   - type: feat, fix, refactor, docs, test, chore
+   - scope: module principal modifié
+   - description: action principale en impératif
+
+## Titre de la MR
+
+Proposer le titre généré à l'utilisateur :
+
+```
+Titre proposé : "feat(auth): ajoute la validation JWT"
+```
+
+Demander confirmation ou correction :
+- **Confirmer** → passer à la génération de la description
+- **Corriger** → attendre le nouveau titre et l'utiliser
+
+## Description de la MR
+
+Générer la description selon les règles de taille et de format ci-dessous, puis la présenter à l'utilisateur.
+
+Demander confirmation ou correction :
+- **Confirmer** → passer à la mise à jour glab
+- **Corriger** → attendre la nouvelle description et l'utiliser
+
+## Mise à jour GLab
+
+Si l'utilisateur confirme le titre et la description :
+
+```bash
+glab mr update <MR_NUMBER> --title "<TITRE_CONFIRME>" --description "<DESCRIPTION_CONFIRMEE>"
+```
+
+Si aucun MR_NUMBER n'est fourni, récupérer via :
+```bash
+glab mr list --source-branch $(git branch --show-current)
+```
 
 ## Taille de la MR
 

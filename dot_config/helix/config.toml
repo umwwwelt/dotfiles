@@ -112,7 +112,7 @@ end-color = "#FF69B4"    # Hot Pink
 animation-speed = 1
 
 [editor.lsp]
-display-inlay-hints = true
+# display-inlay-hints = true
 signature-help-position = "below"
 
 
