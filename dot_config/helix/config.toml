@@ -87,6 +87,8 @@ C-g = [
 s = ":w"
 q = ":bc"
 J = [":set-language json", ":format"]
+e = "file_explorer_in_current_buffer_directory"
+E = "file_explorer"
 
 # Forked - Helix
 #
