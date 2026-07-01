@@ -1,0 +1,51 @@
+# Dotfiles / machine bootstrap
+brew "chezmoi"
+
+# Shell / terminal UX
+brew "fish"
+brew "starship"
+brew "bat"
+brew "btop"
+brew "yazi"
+
+# Terminal app
+cask "ghostty"
+
+# Git / code workflow
+brew "lazygit"
+brew "glab"
+
+# AI
+cask "claude-code"
+brew "opencode"
+brew "rtk"
+
+# Browser
+cask "brave-browser"
+
+# JavaScript / TypeScript
+brew "pnpm"
+
+# Python tooling
+brew "pipx"
+
+# Build / native tooling
+brew "cmake"
+brew "rustup"
+
+# Containers
+brew "docker"
+brew "docker-compose"
+
+# Kubernetes / cloud
+brew "stern"
+
+# VPN
+brew "openvpn"
+
+# Data / media
+brew "ffmpeg"
+brew "visidata"
+
+# Network / download
+brew "wget"

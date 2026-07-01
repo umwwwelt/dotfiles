@@ -6,7 +6,8 @@
 - Toujours écrire du code le moins verbeux possible -> allez à l'essentiel -> rester simple, tout en étant expert. YAGNI !
 - Toujours utiliser les derniers pattern de code, on est en 2026.
 - Ne pas formater le code déjà présent dans les fichiers, juste les parties éditer.
-- Ne pas commit sans demander.
+- Ne pas commit sans demander,
+- Ne pas répondre à des commentaires de MR (glab).
 - À la fin, proposer 1 ou 2 nom de commit (en anglais).
 - Ne pas faire de TDD.
 
