@@ -8,7 +8,7 @@
 - Ne pas formater le code déjà présent dans les fichiers, juste les parties éditer.
 - Ne pas commit sans demander,
 - Ne pas répondre à des commentaires de MR (glab).
-- À la fin, proposer 1 ou 2 nom de commit (en anglais).
+- À la fin de modifications, proposer 1 ou 2 nom de commit (en anglais).
 - Ne pas faire de TDD.
 
 ### Règle spécifique à certains contexte:
