@@ -48,3 +48,6 @@ brew "visidata"
 
 # Network / download
 brew "wget"
+
+# RadioFrance
+cask "slack"

@@ -11,6 +11,7 @@ chezmoi init https://github.com/umwwwelt/dotfiles.git
 chezmoi apply
 
 # Bundle brew
+brew trust dashlane/tap
 brew bundle --file ~/.Brewfile
 
 # Dashlane
