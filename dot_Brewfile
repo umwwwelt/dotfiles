@@ -7,6 +7,7 @@ brew "starship"
 brew "bat"
 brew "btop"
 brew "yazi"
+brew "dashlane/tap/dashlane-cli"
 
 # Terminal app
 cask "ghostty"
@@ -23,15 +24,13 @@ brew "rtk"
 # Browser
 cask "brave-browser"
 
-# JavaScript / TypeScript
-brew "pnpm"
-
-# Python tooling
+# Code 
+brew "pnpm" 
 brew "pipx"
+brew "rust"
 
 # Build / native tooling
 brew "cmake"
-brew "rustup"
 
 # Containers
 brew "docker"

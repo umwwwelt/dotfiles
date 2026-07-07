@@ -15,12 +15,12 @@ end
 
 # VARIABLES
 set -g fish_greeting ""
-set -g fish_key_bindings fish_helix_key_bindings
-set -g HELIX_RUNTIME "/Users/tantra/.config/helix/runtime"
+# set -g fish_key_bindings fish_helix_key_bindings
+set -g HELIX_RUNTIME "$HOME/.config/helix/runtime"
 set -gx EDITOR hx
 set -gx VISUAL hx
 
-set -gx XDG_CONFIG_HOME "/Users/tantra/.config"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # PUPPETEER
 set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
@@ -35,3 +35,10 @@ abbr -a vd "vd --csv-delimiter=';'"
 
 #ALIAS CODE 
 # alias m cd ~/Code/murmure/troubadour
+
+# pnpm
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
