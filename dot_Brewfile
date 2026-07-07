@@ -51,3 +51,5 @@ brew "wget"
 
 # RadioFrance
 cask "slack"
+brew "kubectl"
+brew "teleport"
