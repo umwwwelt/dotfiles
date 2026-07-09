@@ -20,6 +20,7 @@ brew "glab"
 cask "claude-code"
 brew "opencode"
 brew "rtk"
+brew "ollama"
 
 # Browser
 cask "brave-browser"
