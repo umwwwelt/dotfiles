@@ -17,5 +17,5 @@ Pour Python, Rust et Postgres : expliquer le code généré, car je suis débuta
 ## Vérifications / lint
 
 - Ne jamais lancer `rtk lint`.
-- Pour vérifier ESLint, utiliser uniquement `rtk npm run lint -- --fix`.
-- Pour TypeScript, utiliser `rtk npm run build-check`.
+- Pour vérifier ESLint, utiliser uniquement (dans le context npm) `rtk npm run lint -- --fix`.
+- Pour TypeScript, utiliser (dans un repo npm) `rtk npm run build-check`.
