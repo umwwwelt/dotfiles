@@ -14,3 +14,6 @@ fish_add_path -g $HOME/.nvm/versions/node/v22.14.0/bin/
 
 # pnpm
 fish_add_path -g $HOME/Library/pnpm/
+
+#bun
+fish_add_path -g "$HOME/.bun/bin"
