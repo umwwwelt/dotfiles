@@ -6,13 +6,16 @@
 - Toujours écrire du code le moins verbeux possible -> allez à l'essentiel -> rester simple, tout en étant expert. YAGNI !
 - Toujours utiliser les derniers pattern de code, on est en 2026.
 - Ne pas formater le code déjà présent dans les fichiers, juste les parties éditer.
+- Ne pas modifier sur main, toujours créer une branche à partir de main (pull).
 - Ne pas commit sans demander,
 - Ne pas répondre à des commentaires de MR (glab).
 - À la fin de modifications, proposer 1 ou 2 nom de commit (en anglais).
 - Ne pas faire de TDD.
+- Pour une modification simple et localisée dont la solution est évidente, implémenter directement, sans brainstorming, spec, plan, etc. Réserver ces processus aux demandes explicites, aux ambiguïtés réelles.
 
 ### Règle spécifique à certains contexte:
 Pour Python, Rust et Postgres : expliquer le code généré, car je suis débutant.
+
 
 ## Vérifications / lint
 
