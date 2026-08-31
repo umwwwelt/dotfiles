@@ -1,2 +1,3 @@
 dot_config/helix/runtime
 **/node_modules/
+.claude/settings.local.json

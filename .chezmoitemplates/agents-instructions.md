@@ -1,4 +1,4 @@
-# Instructions globales OpenCode
+# Instructions globales
 
 ## Règles critiques:
 - Répondre en FR.
