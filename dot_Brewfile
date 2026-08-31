@@ -15,6 +15,7 @@ cask "ghostty"
 # Git / code workflow
 brew "lazygit"
 brew "glab"
+brew "gh"
 
 # AI
 cask "claude-code"
