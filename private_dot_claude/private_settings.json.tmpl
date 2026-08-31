@@ -24,6 +24,10 @@
     }
   },
   "advisorModel": "opus",
-  "theme": "auto",
-  "model": "opus[1m]"
+  "theme": "custom:jelly",
+  "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash {{ .chezmoi.homeDir }}/.claude/statusline-command.sh"
+  }
 }

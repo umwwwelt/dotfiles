@@ -1,0 +1,118 @@
+#!/bin/bash
+# Statusline Claude Code - couleurs générées depuis la palette jelly (chezmoi)
+input=$(cat)
+
+model=$(echo "$input" | jq -r '.model.display_name // "unknown"')
+cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // ""')
+dir=$(basename "$cwd")
+transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
+context_window_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
+
+# Palette jelly -> SGR truecolor
+c() { printf -v "$1" '\033[38;2;%d;%d;%dm' "0x${2:1:2}" "0x${2:3:2}" "0x${2:5:2}"; }
+c TEAL   '{{ .jelly.teal }}'
+c YELLOW '{{ .jelly.yellow }}'
+c BLUE   '{{ .jelly.blue }}'
+c LBLUE  '{{ .jelly.lblue }}'
+c ORANGE '{{ .jelly.orange }}'
+c RED    '{{ .jelly.red }}'
+c PURP   '{{ .jelly.purp }}'
+c LGREEN '{{ .jelly.lgreen }}'
+c FG1    '{{ .jelly.fg1 }}'
+c BASE5  '{{ .jelly.base5 }}'
+RESET=$'\033[0m'
+
+# Git branch (skip optional locks)
+branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null)
+
+# GitLab MR for the current branch (cached + refreshed in background to keep render fast)
+mr_iid=""
+mr_url=""
+if [ -n "$branch" ] && command -v glab >/dev/null 2>&1; then
+  cache_dir="${TMPDIR:-/tmp}/claude-statusline-mr"
+  mkdir -p "$cache_dir" 2>/dev/null
+  cache_key=$(printf '%s\n%s' "$cwd" "$branch" | cksum | cut -d' ' -f1)
+  cache_file="$cache_dir/$cache_key"
+  refresh=1
+  if [ -f "$cache_file" ]; then
+    mtime=$(stat -f %m "$cache_file" 2>/dev/null || stat -c %Y "$cache_file" 2>/dev/null || echo 0)
+    age=$(( $(date +%s) - mtime ))
+    [ "$age" -lt 120 ] && refresh=0
+  fi
+  if [ "$refresh" -eq 1 ]; then
+    # Non-blocking refresh: write the latest open MR (iid<TAB>url) for this branch.
+    ( cd "$cwd" 2>/dev/null && glab mr list --source-branch "$branch" -F json 2>/dev/null \
+        | jq -r '.[0] | select(.iid) | "\(.iid)\t\(.web_url)"' > "$cache_file.tmp" 2>/dev/null \
+        && mv "$cache_file.tmp" "$cache_file" 2>/dev/null ) >/dev/null 2>&1 &
+  fi
+  if [ -f "$cache_file" ]; then
+    mr_iid=$(cut -f1 "$cache_file" 2>/dev/null)
+    mr_url=$(cut -f2 "$cache_file" 2>/dev/null)
+  fi
+fi
+
+# Calculate context used percentage from transcript
+used_int=""
+if [ -n "$transcript_path" ] && [ -n "$context_window_size" ] && [ -f "$transcript_path" ] && [ "$context_window_size" -gt 0 ] 2>/dev/null; then
+  used_tokens=$(jq -s 'map(select(.message.usage and .isSidechain != true and .isApiErrorMessage != true)) | last | if . then (.message.usage.input_tokens // 0) + (.message.usage.cache_read_input_tokens // 0) + (.message.usage.cache_creation_input_tokens // 0) else 0 end' < "$transcript_path" 2>/dev/null)
+  if [ -n "$used_tokens" ] && [ "$used_tokens" -gt 0 ] 2>/dev/null; then
+    used_int=$(awk "BEGIN { printf \"%d\", ($used_tokens / $context_window_size) * 100 }")
+  fi
+fi
+
+# Total tokens consumed across the whole session (all turns, incl. cache)
+total_fmt=""
+if [ -n "$transcript_path" ] && [ -f "$transcript_path" ]; then
+  total_tokens=$(jq -s 'map(select(.message.usage and .isSidechain != true and .isApiErrorMessage != true) | .message.usage | (.input_tokens // 0) + (.output_tokens // 0) + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0)) | add // 0' < "$transcript_path" 2>/dev/null)
+  if [ -n "$total_tokens" ] && [ "$total_tokens" -gt 0 ] 2>/dev/null; then
+    total_fmt=$(awk "BEGIN { if ($total_tokens >= 1000000) printf \"%.1fM\", $total_tokens / 1000000; else if ($total_tokens >= 1000) printf \"%.1fk\", $total_tokens / 1000; else printf \"%d\", $total_tokens }")
+  fi
+fi
+
+# Build output
+out="${TEAL}${model}${RESET}"
+
+# Reasoning effort if available (absent when model doesn't support it)
+if [ -n "$effort" ]; then
+  case "$effort" in
+    low)       ecolor=$LGREEN ;;
+    medium)    ecolor=$YELLOW ;;
+    high)      ecolor=$ORANGE ;;
+    xhigh|max) ecolor=$RED ;;
+    *)         ecolor=$LBLUE ;;
+  esac
+  out="${out} ${ecolor}${effort}${RESET}"
+fi
+
+# Directory
+out="${out} ${FG1}${dir}${RESET}"
+
+# Git branch if present
+[ -n "$branch" ] && out="${out} ${PURP}(${branch})${RESET}"
+
+# GitLab MR badge (clickable via OSC 8 hyperlink, BEL-terminated)
+if [ -n "$mr_iid" ]; then
+  if [ -n "$mr_url" ]; then
+    out="${out} ${BLUE}$(printf '\033]8;;%s\007MR !%s\033]8;;\007' "$mr_url" "$mr_iid")${RESET}"
+  else
+    out="${out} ${BLUE}MR !${mr_iid}${RESET}"
+  fi
+fi
+
+# Context used percentage if available
+if [ -n "$used_int" ]; then
+  if [ "$used_int" -ge 80 ]; then
+    color=$RED
+  elif [ "$used_int" -ge 50 ]; then
+    color=$ORANGE
+  else
+    color=$LGREEN
+  fi
+  out="${out} ${color}ctx:${used_int}%${RESET}"
+fi
+
+# Total session tokens consumed
+[ -n "$total_fmt" ] && out="${out} ${BASE5}tok:${total_fmt}${RESET}"
+
+printf '%s' "$out"
