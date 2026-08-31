@@ -1,11 +1,11 @@
 # Lazy conda init to speed up fish startup.
 function conda
-    if test -f /Users/tantra/miniconda3/bin/conda
-        eval /Users/tantra/miniconda3/bin/conda "shell.fish" hook $argv | source
-    else if test -f "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
-        source "/Users/tantra/miniconda3/etc/fish/conf.d/conda.fish"
+    if test -f $HOME/miniconda3/bin/conda
+        eval $HOME/miniconda3/bin/conda "shell.fish" hook $argv | source
+    else if test -f "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
+        source "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH /Users/tantra/miniconda3/bin $PATH
+        set -x PATH $HOME/miniconda3/bin $PATH
     end
     functions -e conda
     conda $argv
@@ -24,7 +24,10 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # PUPPETEER
 set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+# `type -q` est un builtin : pas de fork si chromium est absent.
+if type -q chromium
+    set -gx PUPPETEER_EXECUTABLE_PATH (command -v chromium)
+end
 
 #ALIAS
 alias h hx
@@ -36,9 +39,5 @@ abbr -a vd "vd --csv-delimiter=';'"
 #ALIAS CODE 
 # alias m cd ~/Code/murmure/troubadour
 
-# pnpm
+# pnpm (le PATH est géré par conf.d/10-paths.fish)
 set -gx PNPM_HOME "$HOME/Library/pnpm"
-if not string match -q -- "$PNPM_HOME/bin" $PATH
-    set -gx PATH "$PNPM_HOME/bin" $PATH
-end
-# pnpm end
