@@ -23,6 +23,23 @@ c FG1    '{{ .jelly.fg1 }}'
 c BASE5  '{{ .jelly.base5 }}'
 RESET=$'\033[0m'
 
+# Raw hex (no escape) for gradient interpolation between LGREEN and RED
+LGREEN_HEX='{{ .jelly.lgreen }}'
+RED_HEX='{{ .jelly.red }}'
+
+# Truecolor interpolated between LGREEN (0%) and RED (100%), stepped every 10%
+gradient_color() {
+  local pct=$1 step t r1 g1 b1 r2 g2 b2 r g b
+  step=$(( pct / 10 )); [ "$step" -gt 10 ] && step=10
+  t=$(awk "BEGIN { printf \"%.4f\", $step / 10 }")
+  r1=$((16#${LGREEN_HEX:1:2})); g1=$((16#${LGREEN_HEX:3:2})); b1=$((16#${LGREEN_HEX:5:2}))
+  r2=$((16#${RED_HEX:1:2}));    g2=$((16#${RED_HEX:3:2}));    b2=$((16#${RED_HEX:5:2}))
+  r=$(awk "BEGIN { printf \"%d\", $r1 + ($r2 - $r1) * $t }")
+  g=$(awk "BEGIN { printf \"%d\", $g1 + ($g2 - $g1) * $t }")
+  b=$(awk "BEGIN { printf \"%d\", $b1 + ($b2 - $b1) * $t }")
+  printf '\033[38;2;%d;%d;%dm' "$r" "$g" "$b"
+}
+
 # Git branch (skip optional locks)
 branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null)
 
@@ -52,21 +69,18 @@ if [ -n "$branch" ] && command -v glab >/dev/null 2>&1; then
   fi
 fi
 
-# Calculate context used percentage from transcript
+fmt_tokens() { awk "BEGIN { n=$1; if (n >= 1000000) { v = n / 1000000; printf (v == int(v) ? \"%dm\" : \"%.1fm\"), v } else if (n >= 1000) { v = n / 1000; printf (v == int(v) ? \"%dk\" : \"%.1fk\"), v } else printf \"%d\", n }"; }
+
+# Context window usage from transcript: used tokens (last turn) vs window size
 used_int=""
+used_fmt=""
+window_fmt=""
 if [ -n "$transcript_path" ] && [ -n "$context_window_size" ] && [ -f "$transcript_path" ] && [ "$context_window_size" -gt 0 ] 2>/dev/null; then
   used_tokens=$(jq -s 'map(select(.message.usage and .isSidechain != true and .isApiErrorMessage != true)) | last | if . then (.message.usage.input_tokens // 0) + (.message.usage.cache_read_input_tokens // 0) + (.message.usage.cache_creation_input_tokens // 0) else 0 end' < "$transcript_path" 2>/dev/null)
   if [ -n "$used_tokens" ] && [ "$used_tokens" -gt 0 ] 2>/dev/null; then
     used_int=$(awk "BEGIN { printf \"%d\", ($used_tokens / $context_window_size) * 100 }")
-  fi
-fi
-
-# Total tokens consumed across the whole session (all turns, incl. cache)
-total_fmt=""
-if [ -n "$transcript_path" ] && [ -f "$transcript_path" ]; then
-  total_tokens=$(jq -s 'map(select(.message.usage and .isSidechain != true and .isApiErrorMessage != true) | .message.usage | (.input_tokens // 0) + (.output_tokens // 0) + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0)) | add // 0' < "$transcript_path" 2>/dev/null)
-  if [ -n "$total_tokens" ] && [ "$total_tokens" -gt 0 ] 2>/dev/null; then
-    total_fmt=$(awk "BEGIN { if ($total_tokens >= 1000000) printf \"%.1fM\", $total_tokens / 1000000; else if ($total_tokens >= 1000) printf \"%.1fk\", $total_tokens / 1000; else printf \"%d\", $total_tokens }")
+    used_fmt=$(fmt_tokens "$used_tokens")
+    window_fmt=$(fmt_tokens "$context_window_size")
   fi
 fi
 
@@ -86,33 +100,24 @@ if [ -n "$effort" ]; then
 fi
 
 # Directory
-out="${out} ${FG1}${dir}${RESET}"
+out="${out} ${FG1}⌂ ${dir}${RESET}"
 
 # Git branch if present
-[ -n "$branch" ] && out="${out} ${PURP}(${branch})${RESET}"
+[ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${RESET}"
 
 # GitLab MR badge (clickable via OSC 8 hyperlink, BEL-terminated)
 if [ -n "$mr_iid" ]; then
   if [ -n "$mr_url" ]; then
-    out="${out} ${BLUE}$(printf '\033]8;;%s\007MR !%s\033]8;;\007' "$mr_url" "$mr_iid")${RESET}"
+    out="${out} ${BLUE}⛙ $(printf '\033]8;;%s\007MR !%s\033]8;;\007' "$mr_url" "$mr_iid")${RESET}"
   else
-    out="${out} ${BLUE}MR !${mr_iid}${RESET}"
+    out="${out} ${BLUE}⛙ MR !${mr_iid}${RESET}"
   fi
 fi
 
-# Context used percentage if available
-if [ -n "$used_int" ]; then
-  if [ "$used_int" -ge 80 ]; then
-    color=$RED
-  elif [ "$used_int" -ge 50 ]; then
-    color=$ORANGE
-  else
-    color=$LGREEN
-  fi
-  out="${out} ${color}ctx:${used_int}%${RESET}"
+# Context window usage: used/total (percentage), color gradient stepped every 10%
+if [ -n "$used_fmt" ]; then
+  gcolor=$(gradient_color "$used_int")
+  out="${out} ${gcolor}⛁ ${used_fmt}/${window_fmt} (${used_int}%)${RESET}"
 fi
-
-# Total session tokens consumed
-[ -n "$total_fmt" ] && out="${out} ${BASE5}tok:${total_fmt}${RESET}"
 
 printf '%s' "$out"
