@@ -2,12 +2,13 @@
 # Statusline Claude Code - couleurs générées depuis la palette jelly (chezmoi)
 input=$(cat)
 
-model=$(echo "$input" | jq -r '.model.display_name // "unknown"')
+model=$(echo "$input" | jq -r '.model.display_name // "unknown"' | sed -E 's/ *\(.*\)$//')
 cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // ""')
 dir=$(basename "$cwd")
 transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
 context_window_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
 effort=$(echo "$input" | jq -r '.effort.level // empty')
+weekly_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 
 # Palette jelly -> SGR truecolor
 c() { printf -v "$1" '\033[38;2;%d;%d;%dm' "0x${2:1:2}" "0x${2:3:2}" "0x${2:5:2}"; }
@@ -84,8 +85,18 @@ if [ -n "$transcript_path" ] && [ -n "$context_window_size" ] && [ -f "$transcri
   fi
 fi
 
+# Weekly quota (rate_limits.seven_day) as a moon phase filling left to right: empty = 0%, full = 100%
+MOONS=(              )
+out=""
+if [ -n "$weekly_pct" ]; then
+  wp=$(awk "BEGIN { printf \"%d\", $weekly_pct }")
+  [ "$wp" -gt 100 ] && wp=100
+  moon=${MOONS[$(( wp * (${#MOONS[@]} - 1) / 100 ))]}
+  out="$(gradient_color "$wp")${moon}${RESET} "
+fi
+
 # Build output
-out="${TEAL}${model}${RESET}"
+out="${out}${TEAL}${model}${RESET}"
 
 # Reasoning effort if available (absent when model doesn't support it)
 if [ -n "$effort" ]; then
@@ -100,7 +111,7 @@ if [ -n "$effort" ]; then
 fi
 
 # Directory
-out="${out} ${FG1}⌂ ${dir}${RESET}"
+out="${out} ${FG1}󰉖 ${dir}${RESET}"
 
 # Git branch if present
 [ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${RESET}"
