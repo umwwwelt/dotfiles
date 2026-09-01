@@ -33,6 +33,7 @@ end
 alias h hx
 alias lg lazygit
 alias op opencode
+alias cl claude
 alias d clear
 abbr -a vd "vd --csv-delimiter=';'"
 
