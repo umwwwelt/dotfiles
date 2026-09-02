@@ -29,6 +29,7 @@ cask "zen"
 cask "zen-privacy"
 
 # Code 
+brew "fnm"
 brew "pnpm" 
 brew "pipx"
 brew "rust"
