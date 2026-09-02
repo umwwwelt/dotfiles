@@ -9,6 +9,7 @@ transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
 context_window_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
 effort=$(echo "$input" | jq -r '.effort.level // empty')
 weekly_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+session_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 
 # Palette jelly -> SGR truecolor
 c() { printf -v "$1" '\033[38;2;%d;%d;%dm' "0x${2:1:2}" "0x${2:3:2}" "0x${2:5:2}"; }
@@ -22,6 +23,7 @@ c PURP   '{{ .jelly.purp }}'
 c LGREEN '{{ .jelly.lgreen }}'
 c FG1    '{{ .jelly.fg1 }}'
 c BASE5  '{{ .jelly.base5 }}'
+c BASE4  '{{ .jelly.base4 }}'
 RESET=$'\033[0m'
 
 # Raw hex (no escape) for gradient interpolation between LGREEN and RED
@@ -85,15 +87,23 @@ if [ -n "$transcript_path" ] && [ -n "$context_window_size" ] && [ -f "$transcri
   fi
 fi
 
-# Weekly quota (rate_limits.seven_day) as a moon phase filling left to right: empty = 0%, full = 100%
+# Quota gauges, filling left to right (empty = 0%, full = 100%), separated by a dash:
+# weekly (rate_limits.seven_day) as a moon phase, session (rate_limits.five_hour) as a pie slice
 MOONS=(              )
+SLICES=(󰄰 󰪞 󰪟 󰪠 󰪡 󰪢 󰪣 󰪤 󰪥)
 out=""
+if [ -n "$session_pct" ]; then
+  sp=$(awk "BEGIN { printf \"%d\", $session_pct }")
+  [ "$sp" -gt 100 ] && sp=100
+  out="${BASE4}${SLICES[$(( sp * (${#SLICES[@]} - 1) / 100 ))]}${RESET}"
+fi
 if [ -n "$weekly_pct" ]; then
   wp=$(awk "BEGIN { printf \"%d\", $weekly_pct }")
   [ "$wp" -gt 100 ] && wp=100
-  moon=${MOONS[$(( wp * (${#MOONS[@]} - 1) / 100 ))]}
-  out="$(gradient_color "$wp")${moon}${RESET} "
+  [ -n "$out" ] && out="${out}${BASE4}-${RESET}"
+  out="${out}$(gradient_color "$wp")${MOONS[$(( wp * (${#MOONS[@]} - 1) / 100 ))]}${RESET}"
 fi
+[ -n "$out" ] && out="${out} "
 
 # Build output
 out="${out}${TEAL}${model}${RESET}"
