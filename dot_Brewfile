@@ -25,6 +25,8 @@ brew "ollama"
 
 # Browser
 cask "brave-browser"
+cask "zen"
+cask "zen-privacy"
 
 # Code 
 brew "pnpm" 
