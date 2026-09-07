@@ -22,6 +22,7 @@ cask "claude-code"
 brew "opencode"
 brew "rtk"
 brew "ollama"
+cask "chatgpt"
 
 # Browser
 cask "brave-browser"
