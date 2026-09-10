@@ -10,6 +10,7 @@ context_window_size=$(echo "$input" | jq -r '.context_window.context_window_size
 effort=$(echo "$input" | jq -r '.effort.level // empty')
 weekly_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 session_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+session_id=$(echo "$input" | jq -r '.session_id // empty')
 
 # Palette jelly -> SGR truecolor
 c() { printf -v "$1" '\033[38;2;%d;%d;%dm' "0x${2:1:2}" "0x${2:3:2}" "0x${2:5:2}"; }
@@ -104,6 +105,13 @@ if [ -n "$weekly_pct" ]; then
   out="${out}$(gradient_color "$wp")${MOONS[$(( wp * (${#MOONS[@]} - 1) / 100 ))]}${RESET}"
 fi
 [ -n "$out" ] && out="${out} "
+
+# Remote Control actif : le registre de session porte bridgeSessionId tant que /rc est connecte
+rc=""
+if [ -n "$session_id" ]; then
+  rc=$(jq -r --arg sid "$session_id" 'select(.sessionId == $sid and .bridgeSessionId) | "1"' "$HOME"/.claude/sessions/*.json 2>/dev/null | head -1)
+fi
+[ -n "$rc" ] && out="${LBLUE}󰄡${RESET}  ${out}"
 
 # Build output
 out="${out}${TEAL}${model}${RESET}"
