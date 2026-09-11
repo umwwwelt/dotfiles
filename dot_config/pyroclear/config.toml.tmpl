@@ -1,0 +1,24 @@
+# Palette jelly, tirée de .chezmoidata.toml comme helix / lazygit / delta.
+#
+# pyroclear ne connaît que deux bornes : il en interpole une rampe de 37 nuances
+# en HSV, indexée par la chaleur de chaque cellule. `from` = chaleur 0 (les
+# pointes qui s'éteignent), `to` = chaleur 36 (la ligne d'allumage, en bas).
+# De yellow à purp, le chemin de teinte le plus court passe par le rouge : les
+# nuances médianes tirent vers red / lred sans avoir à les citer.
+#
+# Attention : `--color`, `--pick` et `--settings` réécrivent ce fichier et
+# perdent ces commentaires. Régler ici, puis `chezmoi apply`.
+#
+# height = 3 (Extreme) : la chaleur ne décroît plus en montant, les flammes
+# atteignent donc le haut de l'écran. Comme une cellule déjà brûlée est
+# repeinte avec le fond par défaut, le texte est effacé au passage du feu et
+# non plus d'un coup à la fin.
+[color]
+from = "{{ .jelly.yellow }}"
+to   = "{{ .jelly.purp }}"
+
+[animation]
+fps       = 60
+wind      = 0
+height    = 3
+direction = false

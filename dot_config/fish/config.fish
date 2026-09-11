@@ -34,7 +34,7 @@ alias h hx
 alias lg lazygit
 alias op opencode
 alias cl claude
-alias d clear
+alias d pyroclear
 abbr -a vd "vd --csv-delimiter=';'"
 
 #ALIAS CODE 
