@@ -46,7 +46,7 @@ brew "stern"
 
 # VPN
 brew "openvpn"
-brew "tailscale"
+cask "tailscale-app"
 
 # Data / media
 brew "ffmpeg"
