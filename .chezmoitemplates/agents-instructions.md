@@ -9,7 +9,7 @@
 - Ne pas modifier directement sur main dans les projets RadioFrance, toujours créer une branche à partir de main (pull).
 - Ne pas commit sans demander,
 - Ne pas répondre à des commentaires de MR (glab).
-- À la fin de modifications, proposer 1 ou 2 nom de commit (en anglais).
+- À la fin de modifications, proposer 1 ou 2 nom de commit (en anglais), et ne pas écrire de description de commit.
 - Ne pas faire de TDD.
 - Pour une modification simple et localisée dont la solution est évidente, implémenter directement, sans brainstorming, spec, plan, etc. Réserver ces processus aux demandes explicites, aux ambiguïtés réelles.
 - pour tous ce qui est accès au `~/.config` j'utilise `chezmoi`.
