@@ -51,6 +51,7 @@ cask "tailscale-app"
 # Data / media
 brew "ffmpeg"
 brew "visidata"
+cask "snapline"
 
 # Network / download
 brew "wget"
