@@ -18,7 +18,7 @@ brew "glab"
 brew "gh"
 
 # AI
-cask "claude-code"
+cask "claude-code@latest"
 brew "opencode"
 brew "rtk"
 brew "ollama"
