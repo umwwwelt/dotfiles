@@ -62,35 +62,21 @@
   "autoMode": {
     "soft_deny": [
       "$defaults",
-      "Bash(kubectl delete:*) — scoped to k8s namespaces seen in usage (source, ppmurmure, test, etc.), pending explicit confirmation for destructive cluster ops",
-      "Bash(glab mr merge:*) — merge-without-review risk on gitlab.dnm.radiofrance.fr/murmure/scissors"
+      "Bash(kubectl delete:*) — pending explicit confirmation for destructive cluster ops",
+      "Bash(glab mr merge:*) — merge-without-review risk"
     ],
     "environment": [
       "### Org-wide",
-      "**Organization**: RadioFrance (gitlab.dnm.radiofrance.fr — this repo's remote org: murmure)",
-      "**Cloud provider(s)**: None configured",
-      "**Repository visibility**: assume private — not queryable via gh (unsupported/GHE host), remote is gitlab.dnm.radiofrance.fr/murmure/scissors, an internal RadioFrance GitLab instance",
+      "**Organization**: RadioFrance (gitlab.dnm.radiofrance.fr)",
       "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
-      "**Secrets management**: source/config.local.json holds local secrets and must not be committed (per repo CLAUDE.md)",
-      "**Default / protected branches**: main is default; do not modify main directly — always branch from an updated main (per repo CLAUDE.md); branch protection not queryable via gh here",
-      "**CI/CD deploy targets**: None configured",
-      "**Network posture**: None configured",
+      "**Default / protected branches**: main is default; do not modify main directly — always branch from an updated main",
       "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
-      "**Source control**: This repo (gitlab.dnm.radiofrance.fr/murmure/scissors) and its origin remote only",
-      "**Trusted internal domains**: apipreprod.priv.radiofrance.dev, apistaging.priv.radiofrance.dev, gitlab.dnm.radiofrance.fr, nexus-production.dnm.radiofrance.fr",
-      "**Trusted cloud buckets**: None configured",
-      "**Key internal services**: Troubadour (transcript API), Bifrost (LLM gateway), Grimoire (persistence layer), Graphity (GraphQL API — always target apipreprod, never staging per repo CLAUDE.md)",
-      "**Internal package registry**: nexus-production.dnm.radiofrance.fr",
-      "**Sensitive data locations & audiences**: source/config.local.json (local secrets, never commit); any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material — share only with audiences cleared at the [named+specifics] bar",
-      "**Data retention / declassification**: None configured",
-      "**Sensitive remote targets**: any namespace, host, or container whose name carries prod or production as a whole word or name segment; note k8s namespace usage includes ppmurmure and test, and apipreprod/apistaging hosts are pre-production, not production",
+      "**Trusted internal domains**: gitlab.dnm.radiofrance.fr",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries prod or production as a whole word or name segment",
       "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
       "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries prod or production as a whole word or name segment",
       "### User-specific",
-      "**Primary use of Claude Code**: software development (Node.js/TypeScript service for radio transcript chronic-boundary detection)",
-      "**Trusted repo**: {{ .chezmoi.homeDir }}/Code/murmure/scissors (gitlab.dnm.radiofrance.fr/murmure/scissors) and its origin remote",
-      "**Org-specific CLIs**: glab (GitLab CLI, used routinely), rtk (used for lint/build-check per repo CLAUDE.md), kubectl (cluster operations), chezmoi (used for ~/.config management per user's global CLAUDE.md)",
-      "routine under gitlab.dnm.radiofrance.fr/murmure/ prefix for this project's git and MR operations"
+      "**Org-specific CLIs**: glab (GitLab CLI), rtk, kubectl, chezmoi"
     ]
   }
 }
