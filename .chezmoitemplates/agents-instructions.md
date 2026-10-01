@@ -13,6 +13,7 @@
 - Ne pas faire de TDD.
 - Pour une modification simple et localisée dont la solution est évidente, implémenter directement, sans brainstorming, spec, plan, etc. Réserver ces processus aux demandes explicites, aux ambiguïtés réelles.
 - pour tous ce qui est accès au `~/.config` j'utilise `chezmoi`.
+- Dès qu'il faut rédiger de la prose (commentaires dans le code, description de MR, artifact, doc, message, etc.), utiliser le skill `humanizer`.
 
 ### Règle spécifique à certains contexte:
 Pour Python, Rust et Postgres : expliquer le code généré, car je suis débutant.
