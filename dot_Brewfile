@@ -26,7 +26,6 @@ cask "chatgpt"
 
 # Browser
 cask "brave-browser"
-cask "zen-privacy"
 
 # Code 
 brew "fnm"
@@ -51,7 +50,7 @@ cask "tailscale-app"
 # Data / media
 brew "ffmpeg"
 brew "visidata"
-cask "snapline"
+cask "macshot"
 
 # Network / download
 brew "wget"
