@@ -15,9 +15,9 @@ add() {
 	claude mcp add-json -s user "$1" "$2" >/dev/null
 }
 
-add svelte '{"type":"http","url":"https://mcp.svelte.dev/mcp"}'
 add context7 '{"type":"http","url":"https://mcp.context7.com/mcp","headers":{"CONTEXT7_API_KEY":"${CONTEXT7_API_KEY}"}}'
 
 # Volontairement absents, déjà couverts nativement par Claude Code :
 #   atlassian, gitlab -> connecteurs claude.ai (`claude mcp login <nom>`)
 #   chrome            -> Claude in Chrome intégré
+#   svelte            -> plugin svelte@svelte (settings.json)
