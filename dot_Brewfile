@@ -23,6 +23,7 @@ brew "opencode"
 brew "rtk"
 brew "ollama"
 cask "chatgpt"
+brew "keith/formulae/reminders-cli"
 
 # Browser
 cask "brave-browser"
