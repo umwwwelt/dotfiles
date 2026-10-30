@@ -149,11 +149,17 @@ if [ -n "$effort" ]; then
   out="${out} ${ecolor}${effort}${RESET}"
 fi
 
+# Context window usage: used/total (percentage), color gradient stepped every 10%
+if [ -n "$used_fmt" ]; then
+  gcolor=$(gradient_color "$used_int")
+  out="${out} ${gcolor}⛁ ${used_fmt}/${window_fmt} (${used_int}%)${RESET}"
+fi
+
 # Directory
 out="${out} ${FG1}󰉖 ${dir}${RESET}"
 
 # Git branch if present
-[ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${diff_seg:+ ${BASE4}${diff_seg}}${RESET}"
+[ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${diff_seg:+${BASE5}${diff_seg}}${RESET}"
 
 # GitLab MR badge (clickable via OSC 8 hyperlink, BEL-terminated)
 if [ -n "$mr_iid" ]; then
@@ -162,12 +168,6 @@ if [ -n "$mr_iid" ]; then
   else
     out="${out} ${BLUE}⛙ MR !${mr_iid}${RESET}"
   fi
-fi
-
-# Context window usage: used/total (percentage), color gradient stepped every 10%
-if [ -n "$used_fmt" ]; then
-  gcolor=$(gradient_color "$used_int")
-  out="${out} ${gcolor}⛁ ${used_fmt}/${window_fmt} (${used_int}%)${RESET}"
 fi
 
 printf '%s' "$out"
