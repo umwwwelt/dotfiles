@@ -8,7 +8,7 @@ xcode-select --install
 brew install chezmoi
 
 chezmoi init https://github.com/umwwwelt/dotfiles.git 
-chezmoi apply
+chezmoi apply --exclude encrypted # pas encore de clé age
 
 # Bundle brew
 brew trust dashlane/tap
@@ -16,6 +16,10 @@ brew bundle --file ~/.Brewfile
 
 # Dashlane
 dcli sync
+
+# Clé age (fichiers chiffrés chezmoi)
+dcli note CHEZMOI_KEY > ~/.config/chezmoi/key.txt && chmod 600 ~/.config/chezmoi/key.txt
+chezmoi apply
 
 # sshkey
 ssh-keygen -t ed25519 -C "blabla@mail.com"
