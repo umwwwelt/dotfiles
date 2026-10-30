@@ -47,6 +47,27 @@ gradient_color() {
 # Git branch (skip optional locks)
 branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null)
 
+# Lignes +/- vs main (commits + non commité + fichiers non suivis), code et commentaires séparés.
+# Commentaire = ligne commençant par // # /* * -- <!-- (heuristique), ou toute ligne d'un .md
+diff_seg=""
+if [ -n "$branch" ] && root=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null) \
+  && base=$(git -C "$root" merge-base main HEAD 2>/dev/null); then
+  read -r add del cadd cdel < <(cd "$root" && {
+    git diff -U0 "$base"
+    git ls-files -oz --exclude-standard | xargs -0 -n1 git diff --no-index -U0 /dev/null
+  } 2>/dev/null | awk '
+    /^diff --git/ { md = $NF ~ /\.(md|mdx)$/; hdr = 1; next }
+    /^@@/ { hdr = 0; next }
+    hdr || !/^[+-]/ { next }
+    { s = substr($0, 2); sub(/^[ \t]+/, "", s)
+      n[substr($0, 1, 1) (md || s ~ /^(\/\/|\/\*|<!--|--|#([^[!]|$)|\*([ \/]|$))/ ? "c" : "")]++ }
+    END { print n["+"] + 0, n["-"] + 0, n["+c"] + 0, n["-c"] + 0 }')
+  # script() <chiffres> <+> <-> : code en exposant, commentaires en indice
+  script() { local s=$1 d=($2) i; for i in {0..9}; do s=${s//$i/${d[i]}}; done; s=${s//+/$3}; printf '%s' "${s//-/$4}"; }
+  (( add || del )) && diff_seg=$(script "+${add}-${del}" '⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹' ⁺ ⁻)
+  (( cadd || cdel )) && diff_seg+=$(script "+${cadd}-${cdel}" '₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉' ₊ ₋)
+fi
+
 # GitLab MR for the current branch (cached + refreshed in background to keep render fast)
 mr_iid=""
 mr_url=""
@@ -132,7 +153,7 @@ fi
 out="${out} ${FG1}󰉖 ${dir}${RESET}"
 
 # Git branch if present
-[ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${RESET}"
+[ -n "$branch" ] && out="${out} ${PURP}⎇ (${branch})${diff_seg:+ ${BASE4}${diff_seg}}${RESET}"
 
 # GitLab MR badge (clickable via OSC 8 hyperlink, BEL-terminated)
 if [ -n "$mr_iid" ]; then
