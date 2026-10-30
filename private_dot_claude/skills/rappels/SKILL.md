@@ -12,7 +12,7 @@ Tous les rappels vont dans la liste `RF`. Le nom est écrit en dur dans chaque c
 Quand mon message commence par `td`, la suite est un todo à noter vite, sans aller-retour :
 
 - Titre : court, à l'infinitif, complété par ce que la conversation et le repo rendent évident. « td faire relire cette mr » sur une branche qui a la MR !42 devient `Faire relire la MR !42 (<projet>)`.
-- Notes : les infos utiles pour reprendre la tâche sans contexte, comme le lien de la MR, la branche ou le fichier concerné. Ne rien inventer : ce qui n'est pas sûr reste dehors.
+- Notes : une ligne courte, juste de quoi retrouver la tâche, comme le lien de la MR, le ticket ou la branche. Pas de marche à suivre ni d'explication. Ne rien inventer : ce qui n'est pas sûr reste dehors. Exemple : `MUR-312, après merge de copiste !227 : <lien>`.
 - Échéance : le lendemain à 9:00. Le vendredi, le samedi et le dimanche, le lundi suivant à 9:00. Une date ou une heure que je précise remplace ce défaut.
 - Créer directement, sans tableau ni confirmation, puis me donner en une ligne le titre, l'échéance et les notes.
 
