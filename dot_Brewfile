@@ -34,7 +34,7 @@ brew "fnm"
 brew "pnpm" 
 brew "pipx"
 brew "rust"
-brew "marksman"
+brew "markdown-oxide"
 
 # Build / native tooling
 brew "cmake"
