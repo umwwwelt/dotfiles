@@ -1,9 +1,8 @@
 #!/bin/sh
 # Crates installées via cargo, faute de formule Homebrew.
 #
-# `run_after_` (et non `run_onchange_`) : rejoué à chaque `chezmoi apply`, donc
-# cargo récupère la dernière version publiée. Sans version épinglée, un
-# `run_onchange_` ne se rejouerait jamais et figerait l'install d'origine.
+# `run_onchange_` : ne se rejoue que si ce fichier change (ajout d'une crate).
+# Pour mettre à jour, relancer `cargo install --locked <crate>` à la main.
 # Échec toléré : un apply hors-ligne ne doit pas casser pour un outil cosmétique.
 
 set -u
