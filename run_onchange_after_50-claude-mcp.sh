@@ -16,6 +16,7 @@ add() {
 }
 
 add context7 '{"type":"http","url":"https://mcp.context7.com/mcp","headers":{"CONTEXT7_API_KEY":"${CONTEXT7_API_KEY}"}}'
+add vercel '{"type":"http","url":"https://mcp.vercel.com"}'
 
 # Volontairement absents, déjà couverts nativement par Claude Code :
 #   atlassian, gitlab -> connecteurs claude.ai (`claude mcp login <nom>`)
