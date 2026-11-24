@@ -36,7 +36,9 @@
     "svelte@svelte": true,
     "frontend-design@anthropic-plugin-directory": true,
     "cc-plugin-you-should-know@builtin": true,
-    "mur-metacognition@murmure-marketplace": true
+    "mur-metacognition@murmure-marketplace": true,
+    "o11y@fondation-marketplace": true,
+    "atlassian-mcp@anthropic-plugin-directory": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
@@ -75,6 +77,13 @@
         "source": "github",
         "repo": "sveltejs/ai-tools"
       }
+    },
+    "fondation-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "git@gitlab.dnm.radiofrance.fr:struktur/claude-marketplace.git"
+      },
+      "autoUpdate": true
     }
   },
   "modelSettings": {
@@ -83,6 +92,9 @@
     }
   },
   "advisorModel": "opus",
+  "remote": {
+    "defaultEnvironmentId": "env_01TnRz7J8yu9MtF5XDCKhQYa"
+  },
   "theme": "custom:jelly",
   "agentPushNotifEnabled": true,
   "autoMode": {
@@ -104,5 +116,6 @@
       "### User-specific",
       "**Org-specific CLIs**: glab (GitLab CLI), rtk, kubectl, chezmoi"
     ]
-  }
+  },
+  "model": "opus"
 }
