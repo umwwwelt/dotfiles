@@ -25,6 +25,7 @@ brew "rtk"
 brew "ollama"
 cask "chatgpt"
 brew "keith/formulae/reminders-cli"
+cask "anomalyco/tap/hex"
 
 # Browser
 cask "brave-browser"
